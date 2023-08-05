@@ -9,6 +9,7 @@ class Memo(BaseModel):
 memos = []
 
 app = FastAPI()
+
 @app.post("/memos")
 def create_memo(memo:Memo):
     memos.append(memo)

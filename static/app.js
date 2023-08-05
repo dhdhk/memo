@@ -1,7 +1,7 @@
 function displayMemo(memos) {
   const ul = document.querySelector("#memo-ul");
   const li = document.querySelector("li");
-  li.innerText = `[id:${momo.id}] ${memo.content}`;
+  li.innerText = `[id:${memos.id}] ${memos.content}`;
   ul.appendChild(li);
 }
 
@@ -35,4 +35,4 @@ function handleSubmit(event) {
 readMemo();
 
 const form = document.querySelector("#memo-form");
-form.addEventListener("submit", createMemo);
+form.addEventListener("submit", handleSubmit);
