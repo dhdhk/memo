@@ -1,22 +1,25 @@
 from fastapi import FastAPI
-from pydantic import BaseModel
 from fastapi.staticfiles import StaticFiles
-
-class Memo(BaseModel):
-    id:str
-    content:str
-    
-memos = []
+from pydantic import BaseModel
 
 app = FastAPI()
 
+
+class Memo(BaseModel):
+    id: int
+    content: str
+
+
+memos = []
+
+
 @app.post("/memos")
-def create_memo(memo:Memo):
+async def create_memo(memo:Memo):
     memos.append(memo)
-    return '성공했습니다'
+    return "성공했습니다"
 
 @app.get("/memos")
-def read_memo():
+async def read_memo():
     return memos
 
 app.mount("/", StaticFiles(directory="static",html=True), name="static")
